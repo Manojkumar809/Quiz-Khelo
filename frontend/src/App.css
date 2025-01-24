@@ -1,0 +1,404 @@
+@import url('https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(131, 4, 204);
+  padding: 0rem 1rem;
+  box-shadow: 1px 2px 3px rgb(55, 55, 55);
+}
+
+.logo {
+  font-size: 3rem;
+  margin: 0.5rem;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+}
+
+.routes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  font-size: 2rem;
+}
+
+.routes li{
+  list-style: none;
+  margin: 0.5rem;
+}
+
+.navbar a{
+  height: 100%;
+  width: 100%;
+  padding: 1rem; 
+  text-decoration: none;
+  text-transform: capitalize;
+  font-family: "Smooch Sans", serif;
+  font-weight: 500;
+  color: whitesmoke;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.navbar a:hover {
+  background-color: rgba(197, 167, 220, 0.5);
+}
+
+.menu {
+  height: 100%;
+  width: 3rem;
+  background-color: rgb(94, 1, 148);
+  padding: 0.3rem;
+  border-radius: 0.5rem;
+  display: none;
+}
+
+.menu .bar {
+  height: 0.3rem;
+  width: 100%;
+  background-color: white;
+  margin: 0.4rem 0rem;
+  border-radius: 0.5rem;
+}
+
+@media (max-width: 520px) {
+  .menu {
+    display: block;
+  }
+  .routes {
+    width: 50%;
+    transform: translateX(100%);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    background-color: rgb(131, 4, 204);
+    top: 7rem;
+    right: 0;
+    padding: 1rem 0rem;
+    border-radius: 0.4rem;
+    transition: all 0.3s ease-in;
+    z-index: 10;
+  }
+  .routes li {
+    margin: 1rem 0rem;
+    width: 90%;
+    padding: 0.2rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+  .routes.active {
+    transform: translateX(0%);
+  }
+}
+
+.home {
+  height: 92vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+}
+
+.homeText, .homeImage {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  overflow: hidden;
+  padding: 2rem;
+}
+
+.homeText {
+  font-size: 3rem;
+  z-index: 1;
+}
+
+.homeText h1{
+  color: rgb(68, 74, 119);
+  text-shadow: 3px 2px 4px rgb(189, 43, 234);
+}
+
+.homeImage img {
+  height: 100%;
+  width: 70%;
+}
+
+@media (max-width:740px) {
+  .homeImage {
+    bottom: -20rem;
+  }
+  .homeImage img{
+    height: 70%;
+    width: 180%;
+  }
+}
+
+.btnContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quizForms button {
+  margin: 1rem;
+  padding: 1rem;
+  width: 12rem;
+  color: purple;
+  border-radius: 0.4rem;
+  font-size: 1.5rem;
+  box-shadow: 0px 4px 2px rgb(56, 55, 55);
+  background-color: rgba(255, 255, 255, 0.846);
+  border: none;
+  transition: all 0.4s ease;
+}
+
+.quizForms button:hover {
+  transform: translateY(4px);
+  box-shadow: none;
+}
+
+.quizComp {
+  height: 92.5vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.quizForms {
+  height: 40%;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: rgb(157, 30, 236);
+  border-radius: 1rem;
+}
+
+.quizForms form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+@media (max-width:700px) {
+  .quizForms{
+    flex-direction: column;
+    height: 70%;
+  }
+}
+
+.quizForms form input, select {
+  background-color: whitesmoke;
+  height: 3rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  border: none;
+  margin: 0.5rem;
+  padding: 1rem;
+  color: blueviolet;
+  font-size: 1.5rem;
+  outline: none;
+  box-shadow: 2px 3px 4px rgb(187, 109, 255);
+}
+
+.quizForms form select {
+  padding: 0.5rem;
+  font-size: 1.3rem;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.qform, .qplay {
+  margin: 1rem;
+  padding: 0.5rem;
+  height: 100%;
+  border-radius: 1rem;
+  background-color: rgba(235, 234, 233, 0.675);
+  backdrop-filter: blur(1rem);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.scoreSection {
+  font-size: 1.5rem;
+  text-align: center;
+  background-color: rgb(17, 170, 17);
+}
+
+.scoreSection h2 {
+  color: #f6f5f5;
+  text-shadow: 2px 2px 2px rgb(60, 10, 237);
+}
+
+.quizInfo {
+  font-family: "Smooch Sans", serif;
+  margin: 1rem 0rem;
+  padding: 0.5rem;
+  background-color: rgb(42, 3, 81);
+  border: 1px solid #ff9901;
+  border-radius: 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quizInfo button {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0rem 1rem;
+  padding: 1rem;
+  border-radius: 0.4rem;
+  border: none;
+  box-shadow: 0px 3px 1px rgb(255, 255, 255);
+  width: 13rem;
+  transition: all 0.2s ease;
+}
+
+.quizInfo button:hover {
+  background-color: #e4d2ec;
+  transform: translateY(2px);
+}
+
+.quizCardComp {
+  background-color: rgb(255, 255, 255);
+  min-height: max-content;
+}
+
+.quizCardComp .container {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 1rem;
+  border: 1px solid rgb(166, 152, 152);
+  box-shadow: 2px 2px 3px rgb(173, 163, 179), 
+          3px 3px 4px rgb(214, 209, 209) inset;
+  border-radius: 1rem;
+}
+
+.container .ques, .optionSec {
+  font-size: 1.6rem;
+  padding: 1rem;
+}
+
+.container .ques >* {
+  margin: 0rem 0.5rem;
+}
+
+.container .ques .difficulty {
+  font-weight: 1000;
+  text-shadow: 2px 2px 2px rgb(152, 151, 151);
+}
+
+.container .optionSec {
+  display: flex;
+  overflow-x: hidden;
+}
+
+.container .optionSec button {
+  text-align: left;
+  padding: 0.8rem;
+  margin: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid rebeccapurple;
+  flex-grow: 1;
+  text-align: center;
+  width: 90%;
+  box-shadow: 0px 1px 1px rgb(80, 80, 80);
+  background-color: #fff;
+  transition: all 0.2s ease-in-out;
+}
+
+.container .optionSec button:hover {
+  background-color: rgb(218, 200, 236);
+  transform: translateY(2px);
+}
+
+.container .optionSec button:disabled {
+  background-color: #a0c4ff;
+  pointer-events: none;
+}
+
+@media (max-width:500px) {
+  .container .optionSec {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.aboutComp {
+  background-color: #f6f5f5;
+  font-size: 1.5rem;
+}
+
+header {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.aboutComp h2{
+  padding: 0.5rem 0rem;
+}
+section {
+  padding: 20px;
+  margin: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+h2 {
+  color: #9c5959;
+}
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+ul li {
+  margin-bottom: 10px;
+}
+footer {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.spinner {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+  border: 5px solid white;
+  border-top: 5px solid green;
+  border-bottom: 5px solid green;
+  animation: spin 1s ease-in-out infinite;
+  padding: 0.5rem;
+  margin: 1rem 2rem;
+}
+
+@keyframes spin {
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}

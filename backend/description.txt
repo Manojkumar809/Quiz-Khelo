@@ -1,0 +1,97 @@
+Microservices Quiz App Architecture Overview
+The components of the application, along with their functionalities, are as follows:
+
+1. Question Service:
+Responsibility: The Question Service manages everything related to questions in your system. It is responsible for creating random questions on a given topic and calculating scores based on responses to the quiz questions.
+Database: It uses a separate MySQL database to store question data.
+Technology: 
+	* Java Spring Boot for the backend framework.
+	* Spring Boot Web for creating RESTful services to expose APIs.
+	* MySQL as the database to store question data.
+	* Spring Data JPA for database interaction and CRUD operations.
+	* Lombok to reduce boilerplate code in Java entities and POJOs.
+
+2. Quiz Service:
+Responsibility: The Quiz Service is responsible for creating quizzes with a specific title, topic, and a given number of questions. It also handles receiving responses from users to calculate scores for a quiz.
+Integration with Question Service: The Quiz Service communicates with the Question Service to fetch the questions for a quiz by using OpenFeign, which is a declarative HTTP client in Spring. Through this communication, the Quiz Service can request questions from the Question Service based on the quizId.
+Database: This service has its own independent MySQL database to store quiz-related data.
+Technology: 
+	* Java Spring Boot for the backend framework.
+	* Spring Boot Web for building RESTful APIs for quiz management.
+	* MySQL for storing quiz-related data.
+	* Spring Data JPA for interacting with the database.
+	* Lombok to simplify the code for entities and POJOs.
+	* OpenFeign for declarative HTTP client communication between the Quiz Service and the Question Service to retrieve questions based on the quiz ID.
+
+3. Eureka Server (Service Registry):
+Responsibility: The Eureka Server is used for service discovery in your system. Both the Question Service and Quiz Service register themselves with Eureka as clients, which allows them to be discovered by other services.
+Functionality: When a service starts, it registers with Eureka, and Eureka keeps track of active instances of all services. This makes it easier to manage and scale the services.
+
+4. API Gateway:
+Responsibility: The API Gateway acts as the main entry point for external requests to the system. It is responsible for routing requests to the appropriate microservice (either the Question Service or Quiz Service).
+Routing: When a request arrives at the API Gateway, it inspects the request and forwards it to the correct service. For example, requests related to quizzes are routed to the Quiz Service, and those related to questions are routed to the Question Service.
+
+5. Microservice Communication:
+Feign Client: The Quiz Service uses OpenFeign as a declarative HTTP client to communicate with the Question Service. This allows the Quiz Service to send requests to the Question Service to retrieve the required questions for a quiz.
+Service Discovery: Both the Question Service and Quiz Service are registered with Eureka, so they can discover each other dynamically without needing hard-coded URLs.
+
+6. Databases:
+Independent Databases: Each service (Question Service and Quiz Service) has its own independent MySQL database. This separation allows for better encapsulation, scalability, and fault tolerance.
+
+
+Technologies and Tools Used:
+Spring Boot:
+Framework for building the microservices in Java, allowing rapid development of both backend services (Question and Quiz Services) and API Gateway.
+
+Spring Data JPA:
+Simplifies database interactions using JPA for both the Question Service and Quiz Service, allowing easy CRUD operations with MySQL databases.
+
+MySQL:
+A relational database used for both the Question Service and Quiz Service, with each service managing its own independent database schema.
+
+Eureka (Service Discovery):
+A service registry provided by Spring Cloud Eureka for dynamic service discovery, allowing Question and Quiz Services to find and communicate with each other without hardcoding URLs.
+
+OpenFeign:
+A declarative HTTP client used in the Quiz Service to make HTTP requests to the Question Service. It abstracts away the complexity of interacting with REST endpoints.
+
+API Gateway (e.g., Spring Cloud Gateway):
+Acts as the single entry point for client requests, routing them to the appropriate service based on the request path.
+
+Lombok:
+A Java library used to automatically generate common boilerplate code in POJOs (like getters, setters, constructors, and toString methods), improving code clarity and reducing manual effort.
+
+Thunder Client (API Testing):
+Responsibility: Used Thunder Client to test and validate the RESTful APIs in the development process. It helped streamline API testing, making debugging and validation much faster and more efficient.
+
+Spring Cloud:
+A suite of tools that provides solutions for common challenges in microservices architectures, including service discovery (Eureka), load balancing, circuit breaking, and API gateways.
+
+LINKEDIN DESCRIPTION :
+Backend Architecture Overview
+
+1. Question Service
+  - Responsibility: Manages question creation and score calculation.
+  - Technology: Java Spring Boot, Spring Boot Web, MySQL, Spring Data JPA, Lombok.
+
+2. Quiz Service
+  - Responsibility: Manages quiz creation and user responses.
+  - Technology: Java Spring Boot, Spring Boot Web, MySQL, Spring Data JPA, Lombok, OpenFeign.
+
+3. Eureka Server (Service Discovery)
+  - Technology: Spring Cloud Eureka for service discovery.
+
+4. API Gateway
+   Responsibility: Acts as the entry point for client requests and routes them to the appropriate service (either Question Service or Quiz Service).
+   Technology: Spring Cloud Gateway for routing, and request handling.
+
+Technologies Used:
+  - Spring Boot
+  - Spring Boot Web
+  - Spring Data JPA
+  - MySQL
+  - Eureka
+  - OpenFeign
+  - Lombok
+  - API Gateway
+  - Thunder Client

@@ -1,0 +1,94 @@
+Frontend Architecture Overview
+1. React.js (Frontend Framework)
+
+Responsibility:
+The React.js framework is used for building the dynamic and interactive user interface of Quiz Khelo. It enables the frontend to communicate with the backend, render quizzes, capture user inputs, and display real-time feedback.
+
+Features:
+Component-based architecture: The UI is divided into reusable components like quiz form, question display, score board, etc., which make the code modular and easier to maintain.
+State management with React hooks: Uses React hooks (e.g., useState, useEffect) to manage application state and handle dynamic updates in the UI, like updating quiz questions or displaying the score.
+Event handling: React efficiently handles user interactions like answering questions, submitting quizzes, and viewing results.
+
+Technology:
+React.js for building the user interface.
+React hooks for managing state and side effects (e.g., fetching quiz data).
+CSS/Styled-components for styling the components and ensuring a responsive and appealing UI design.
+
+2. Fetch (HTTP Client for API Calls)
+Responsibility:
+Fetch is used to make HTTP requests from the frontend to the backend APIs. This allows the frontend to fetch quizzes, send user responses, and retrieve scores from the Quiz Service and Question Service.
+
+Features:
+Handles GET, POST, and other HTTP methods to interact with RESTful APIs.
+Supports asynchronous operations to ensure the app does not block the user interface while fetching or sending data.
+Automatically handles JSON data for easy integration with the backend.
+
+Technology:
+Fetch API for making HTTP requests and handling responses between the frontend and the backend services.
+
+3. State Management (React Hooks)
+Responsibility:
+React hooks are used to manage the state of the quiz application, ensuring that quiz data, user responses, and scores are updated dynamically in the UI. State management is crucial to handle quiz progression (moving from one question to the next) and displaying real-time results.
+
+Features:
+useState: Used for storing and updating the state of variables, such as questions, answers, score, etc.
+
+Technology:
+React hooks (useState, useEffect) for managing state and rendering UI updates.
+
+4. Routing (React Router)
+Responsibility:
+React Router is used for client-side routing, enabling the app to navigate between different views or pages (e.g., quiz creation page, quiz answering page, result page) without reloading the entire page.
+
+Features:
+Allows for dynamic routing based on the URL path (e.g., /create-quiz, /quiz-result).
+State persistence between routes: The app can retain the quiz state even when navigating to different pages.
+Facilitates back and forward navigation for a smooth user experience.
+
+Technology:
+React Router for handling client-side routing and enabling smooth navigation between pages.
+
+5. Real-Time Updates (Score Calculation)
+Responsibility:
+After a quiz is completed, the real-time score is calculated and displayed dynamically without needing to reload the page.
+
+Features:
+The frontend computes the score based on the user's responses.
+Instant Feedback: Once the quiz is submitted, the score is displayed in real-time.
+The user sees only their final score and no further quiz details after submission.
+
+Technology:
+React's state management and conditional rendering to dynamically update the UI and show the score immediately after the quiz is finished.
+
+6. Styling (CSS & Styled-components)
+Responsibility:
+CSS and Styled-components are used for styling the frontend components to create a clean, visually appealing, and responsive UI.
+
+Features:
+Ensures the app is responsive and works seamlessly across different devices (mobile, tablet, desktop).
+Styled-components are used for creating reusable styled components, enhancing code maintainability and consistency.
+CSS for basic styling (e.g., grid layout, button styles).
+
+Technology:
+CSS for basic styling and layout.
+Styled-components for managing component-specific styles with JavaScript.
+
+LinkedIn Description version : (Full app)
+
+🚀 Excited to share my latest project: Quiz Khelo!
+
+This is a full-stack Java Spring Boot microservices app with a React.js frontend. Users can create personalized quizzes, solve them, and get instant feedback on their performance.
+
+Key Features: ✅ Customizable quizzes with title, topic, and number of questions
+✅ Real-time scoring with instant feedback
+✅ Simple, responsive, and user-friendly interface
+✅ Built with Java Spring Boot, React.js, MySQL, and Spring Cloud API Gateway
+
+Tech Stack:
+Backend: Java Spring Boot (Microservices Architecture)
+Frontend: React.js (Fetch API for communication)
+Database: MySQL
+API Gateway: Spring Cloud API Gateway
+
+Why I built this:
+This project allowed me to explore microservices, RESTful APIs, and full-stack development. It was an exciting challenge integrating frontend and backend seamlessly.
