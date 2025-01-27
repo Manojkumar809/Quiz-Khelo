@@ -13,7 +13,7 @@ const PlayQuiz = () => {
   const getQuizQuestions = async()=>{
     try {
       setLoading(true);
-      const playQuiz = await fetch(`http://localhost:8082/quiz/getQuiz?quizId=${quizId}`);
+      const playQuiz = await fetch(`http://localhost:8083/quiz/getQuiz?quizId=${quizId}`);
       const playQuizRes = await playQuiz.json();
       setTimeout(()=>{
         if(playQuizRes){
@@ -31,7 +31,7 @@ const PlayQuiz = () => {
   const submitResponses = async()=>{
     try {
       setLoading(true);
-      const quizScore = await fetch(`http://localhost:8082/quiz/score?quizId=${quizId}`, {
+      const quizScore = await fetch(`http://localhost:8083/quiz/score?quizId=${quizId}`, {
         method:"POST",
         headers:{
           "Content-Type": "application/json"

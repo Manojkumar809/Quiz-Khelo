@@ -11,7 +11,7 @@ const Quiz = () => {
     const navigate = useNavigate();
     const getQuizTopics = async()=>{
       try {
-        const quizTopics = await fetch(`http://localhost:8082/question/getTopics`);
+        const quizTopics = await fetch(`http://localhost:8083/question/getTopics`);
         const quizTopicsRes = await quizTopics.json();
         if(quizTopicsRes){
           setQuizTopics(quizTopicsRes);
@@ -29,7 +29,7 @@ const Quiz = () => {
         const title = titleRef.current.value;
         const topic = topicRef.current.value;
         const noOfQues = questionCountRef.current.value;
-        const createQuiz = await fetch(`http://localhost:8082/quiz/create?title=${title}&topic=${topic}&count=${noOfQues}`)
+        const createQuiz = await fetch(`http://localhost:8083/quiz/create?title=${title}&topic=${topic}&count=${noOfQues}`)
         const createQuizRes = await createQuiz.json();
         createQuizRes?alert(`Your quiz Id is : ${createQuizRes}`):"";
         console.log(title, topic, noOfQues);
