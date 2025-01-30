@@ -104,6 +104,78 @@ html {
   }
 }
 
+.loginComp, .registerComp{
+  height: 92.5vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.userForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 0.5rem;
+  border: 1px solid gray;
+  font-family: "Smooch Sans", serif;
+  padding: 2rem;
+}
+
+.userForm form >*{
+  background-color: rgb(255, 255, 255);
+  width: 85%;
+  font-size: 1.6rem;
+  font-family: "Smooch Sans", serif;
+  padding: 1rem 1rem;
+  margin: 1rem 1rem;
+  border: 1px solid gray;
+  border-radius: 0.5rem;
+  outline: none;
+}
+
+.userForm h1 {
+  font-size: 3rem;
+  padding: 0;
+  margin: 0;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 2px #ec9c07;
+  color: rgb(105, 10, 10);
+  background-color: transparent;
+}
+
+.userForm form .showpass, .userForm form p{
+  border: none;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 0.5rem;
+}
+
+.userForm form input:focus {
+  outline: 2px solid rgb(251, 213, 2);
+}
+
+.userForm button {
+  background-color: #56bc59;
+  box-shadow: 0px 2px 2px rgb(147, 130, 130);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+.userForm button:visited{
+  outline: 1px solid gold;
+}
+.userForm button:hover {
+  border: 1px solid gold;
+}
+.userForm button:active {
+  background-color: #347336;
+  transform: translateY(0.3rem);
+  box-shadow: none;
+}
+
 .home {
   height: 92vh;
   width: 100vw;
@@ -175,11 +247,13 @@ html {
   height: 92.5vh;
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .quizForms {
   height: 40%;
+  width: max-content;
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -236,15 +310,17 @@ input[type="number"]::-webkit-inner-spin-button {
   background-color: rgba(235, 234, 233, 0.675);
   backdrop-filter: blur(1rem);
   border: 2px solid rgba(255, 255, 255, 0.2);
+  animation: fadein 0.3s ease-in-out;
 }
 
-.scoreSection {
+.scoreSection, .quizIdSection{
   font-size: 1.5rem;
   text-align: center;
-  background-color: rgb(17, 170, 17);
+  width: 100%;
+  background-color: rgba(20, 179, 20, 0.829);
 }
 
-.scoreSection h2 {
+.scoreSection h2, .quizIdSection h2 {
   color: #f6f5f5;
   text-shadow: 2px 2px 2px rgb(60, 10, 237);
 }
@@ -281,6 +357,7 @@ input[type="number"]::-webkit-inner-spin-button {
 .quizCardComp {
   background-color: rgb(255, 255, 255);
   min-height: max-content;
+  animation: fadein 0.3s ease-in-out;
 }
 
 .quizCardComp .container {
@@ -364,6 +441,7 @@ section {
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: fadein 0.3s ease-in-out;
 }
 h2 {
   color: #9c5959;
@@ -400,5 +478,173 @@ footer {
   }
   100%{
     transform: rotate(360deg);
+  }
+}
+
+.user-profile-comp {
+  height: 92.5vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+}
+
+.user-name {
+  background-color: rgb(14, 176, 57);
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1rem 0rem;
+}
+
+.user-name h1, .user-name button{
+  padding: 1rem;
+  margin: 0.5rem;
+  font-weight: 500;
+}
+
+.user-name h1 {
+  font-family: "Smooch Sans", serif;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 3px blue;
+}
+
+.user-name button {
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 0.5rem;
+  box-shadow: 0px 3px 1px rgb(13, 78, 2);
+  height: 4rem;
+  transition: all 0.3s ease;
+}
+
+.user-name button:hover {
+  border: 1px solid gold;
+}
+
+.user-name button:active {
+  transform: translateY(3px);
+  box-shadow: none;
+}
+
+.user-data {
+  height: 50vh;
+  display: flex;
+  gap: 2rem;
+  border: 1px solid gray;
+  padding: 1rem;
+}
+
+.user-data .quiz-stats {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid gray;
+  overflow: hidden;
+  background-color: rgba(39, 225, 216, 0.079);
+  border-radius: 0.5rem;
+  animation: fadein 0.4s ease-in;
+}
+
+.user-data .quiz-stats h1{
+  padding: 0.5rem;
+  margin: 1rem;
+  flex-grow: 1;
+  filter: drop-shadow(0px 0px 3px rgb(25, 24, 24));
+}
+
+.user-data .quiz-stats .stats-circle{
+  width: 25rem;
+  height: 25rem;
+  border-radius: 50%;
+  margin: 1rem;
+  border: 1px solid gray;
+  filter: drop-shadow(0px 0px 3px rgb(25, 24, 24));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: green;
+  text-shadow: 2px 2px 3px yellow;
+}
+
+.quiz-data {
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  overflow-y: scroll;
+}
+
+.quiz-Info {
+  flex-grow: 1;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  background-color: rgba(39, 225, 216, 0.079);
+  border: 1px solid gray;
+  border-radius: 0.5rem;
+  margin: 1rem 0.5rem;
+  gap: 1rem;
+  font-family: "Smooch Sans", serif;
+  padding: 1rem;
+  flex-direction: column;
+  font-size: 1.5rem;
+  animation: fadein 0.4s ease-in;
+  box-shadow: 2px 2px 3px rgb(159, 213, 161), 2px 2px 3px rgb(151, 164, 224) inset;
+}
+
+::-webkit-scrollbar {
+  width: 1rem;
+  height: 1rem;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b5eab3;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #77ec8b;
+}
+
+@keyframes fadein {
+  0%{
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width:700px) {
+  html {
+    font-size: 58%;
+  }
+  .user-data {
+    flex-wrap: wrap-reverse;
+    height: 80vh;
+    overflow-y: scroll;
+    justify-content: center;
+  }
+  .quiz-data {
+    flex-grow: 1;
+    height: 50%;
+  }
+  .quiz-stats .stats-circle{
+    height: 10rem;
+    width: 10rem;
+  }
+}
+
+@media (max-width:400px) {
+  html {
+    font-size: 54%;
   }
 }

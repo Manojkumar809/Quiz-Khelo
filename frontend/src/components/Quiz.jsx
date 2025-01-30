@@ -8,6 +8,8 @@ const Quiz = () => {
     const questionCountRef = useRef(null);
     const quizIdRef = useRef(null);
     const [quizTopics, setQuizTopics] = useState();
+    const[createdQuizId, setCreatedQuizId] = useState(null);
+    const bearerToken = JSON.parse(sessionStorage.getItem("token"));
     const navigate = useNavigate();
     const getQuizTopics = async()=>{
       try {
@@ -21,18 +23,30 @@ const Quiz = () => {
       }
     }
     useEffect(()=>{
-      getQuizTopics();
+      const userToken = JSON.parse(sessionStorage.getItem("token"));
+      if(userToken == null){
+        navigate("/login");
+      }else{
+        getQuizTopics();
+      }
     }, [])
     const handleCreateSubmit = async(e)=>{
       try {
         e.preventDefault();
         const title = titleRef.current.value;
         const topic = topicRef.current.value;
-        const noOfQues = questionCountRef.current.value;
-        const createQuiz = await fetch(`http://localhost:8083/quiz/create?title=${title}&topic=${topic}&count=${noOfQues}`)
-        const createQuizRes = await createQuiz.json();
-        createQuizRes?alert(`Your quiz Id is : ${createQuizRes}`):"";
-        console.log(title, topic, noOfQues);
+        const questionsCount = questionCountRef.current.value;
+        const username = JSON.parse(sessionStorage.getItem("username"));
+        const createQuiz = await fetch(`http://localhost:8083/quiz/create`, {
+          method:"POST",
+          headers:{
+            "Content-Type":"Application/json",
+            "Authorization":`Bearer ${bearerToken}`,
+          },
+          body:JSON.stringify({title, topic, questionsCount, username})
+        })
+        const createQuizRes = await createQuiz.text();
+        createQuizRes?setCreatedQuizId(createQuizRes):"";
         } catch (error) {
           console.log(error);
         }
@@ -48,6 +62,7 @@ const Quiz = () => {
     }
   return (
     <div className="quizComp">
+      {createdQuizId !== null && (<div className="quizIdSection"><h2>Your Quiz Id : {createdQuizId}</h2></div>)}
       <div className="quizForms">
         <div className="qform">
             <form method="post" onSubmit={handleCreateSubmit}>
@@ -58,7 +73,7 @@ const Quiz = () => {
                   return <option key={ind} value={it}>{it.toUpperCase()}</option>
                 }):(<option disabled>No Options Available</option>)}
                 </select>
-                <input type="number" name="quesCount" min="0" placeholder="Number of Questions"
+                <input type="number" name="quesCount" min={1} max={20} placeholder="Number of Questions"
                  ref={questionCountRef}/>
                 <button type="submit" className="createQuiz">Create Quiz</button>
             </form>

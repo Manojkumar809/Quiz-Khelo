@@ -34,6 +34,6 @@ public class routes {
     RouterFunction<ServerResponse> quizRoutes(){
         return GatewayRouterFunctions.route("QUIZ-SERVICE")
         .route(RequestPredicates.path("/quiz/**"), 
-        HandlerFunctions.http("http://localhost:8081")).build();
+        HandlerFunctions.http("http://localhost:8081")).filter(authFilter).build();
     }
 }

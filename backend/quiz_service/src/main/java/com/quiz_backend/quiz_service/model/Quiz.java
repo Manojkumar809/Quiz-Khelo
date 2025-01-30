@@ -15,6 +15,10 @@ public class Quiz {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String title;
+    private String topic;
+    private String username;
+    private int questionsCount;
+    private int score;
     @ElementCollection
     private List<Integer> questionsIds;
 }

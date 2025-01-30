@@ -9,11 +9,18 @@ const PlayQuiz = () => {
   const [loading, setLoading] = useState(false);
   const [score, setScore] = useState(null);
   const location = useLocation();
+  const bearerToken = JSON.parse(sessionStorage.getItem("token"));
   const quizId = location.state.quizId;
   const getQuizQuestions = async()=>{
     try {
       setLoading(true);
-      const playQuiz = await fetch(`http://localhost:8083/quiz/getQuiz?quizId=${quizId}`);
+      const playQuiz = await fetch(`http://localhost:8083/quiz/getQuiz?quizId=${quizId}`, {
+        method:"GET",
+        headers:{
+          "Content-Type":"Application/json",
+          "Authorization":`Bearer ${bearerToken}`
+        }
+      });
       const playQuizRes = await playQuiz.json();
       setTimeout(()=>{
         if(playQuizRes){
@@ -34,11 +41,12 @@ const PlayQuiz = () => {
       const quizScore = await fetch(`http://localhost:8083/quiz/score?quizId=${quizId}`, {
         method:"POST",
         headers:{
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "Authorization":`Bearer ${bearerToken}`
         },
         body:JSON.stringify(quizResponse),
       });
-      const quizScoreRes = await quizScore.json();
+      const quizScoreRes = await quizScore.text();
       if(quizScoreRes){
         setLoading(false);
         setScore(quizScoreRes);
